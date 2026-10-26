@@ -1,6 +1,6 @@
 # Lane County Resource Finder
 
-A full-stack web app that routes people to the right mental health, crisis, housing, and community support services in **Eugene / Lane County, Oregon** — built on the CAHOOTS model of care.
+A full-stack web app that routes people to the right mental health, crisis, housing, and community support services in **Eugene / Lane County, Oregon**, built on the CAHOOTS model of care.
 
 ---
 
