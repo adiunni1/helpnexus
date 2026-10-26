@@ -1,0 +1,26 @@
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+*.so
+
+# Node
+node_modules/
+.next/
+.turbo/
+out/
+
+# ML artifacts (large — use Git LFS or S3 instead)
+ml/artifacts/*.joblib
+ml/data/
+
+# Misc
+.DS_Store
+*.log

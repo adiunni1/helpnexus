@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:3000
+      # Set these to enable the trained classifier (Phase 2):
+      - CLASSIFIER_MODEL_PATH=/app/ml/artifacts/model.joblib
+      - CLASSIFIER_ENCODER_PATH=/app/ml/artifacts/label_encoder.joblib
+    volumes:
+      # Hot-reload the app code without rebuilding
+      - ./backend:/app
+      # Mount ML artifacts when they exist (Phase 2)
+      # - ./ml/artifacts:/app/ml/artifacts:ro
+    healthcheck:
+      test:     ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout:  5s
+      retries:  5
+
+  # ── Next.js frontend ────────────────────────────────────────────────────────
+  frontend:
+    image: node:22-slim
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      # Proxy target for Next.js rewrites (points to backend service)
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules   # anonymous volume so host node_modules don't bleed in
+    depends_on:
+      backend:
+        condition: service_healthy
+
+networks:
+  default:
+    name: resource-finder-net

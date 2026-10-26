@@ -1,0 +1,366 @@
+{
+  "crisis": [
+    {
+      "icon": "📞",
+      "urg": true,
+      "name": "988 Suicide & Crisis Lifeline",
+      "org": "National, available in Lane County",
+      "desc": "Call or text 988 anytime, 24/7. Free, confidential support for people in suicidal crisis or emotional distress. Oregon has a dedicated local option so you'll reach a trained counselor, not a recording.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 Call or text 988", "n": "988"},
+        {"t": "web",  "l": "💬 Chat online", "u": "https://988lifeline.org/chat"}
+      ]
+    },
+    {
+      "icon": "💬",
+      "urg": true,
+      "name": "Crisis Text Line",
+      "org": "National",
+      "desc": "Free 24/7 text-based crisis support. Text HOME to 741741 from anywhere in the US to reach a trained counselor. Useful when speaking out loud is not an option.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "sms", "l": "💬 Text HOME to 741741", "n": "741741"}
+      ]
+    },
+    {
+      "icon": "🕊️",
+      "urg": false,
+      "name": "White Bird Clinic Crisis Line",
+      "org": "White Bird Clinic, Eugene",
+      "desc": "Eugene's local crisis line, staffed by White Bird counselors. White Bird also operates CAHOOTS (currently being restored after its 2025 suspension). Walk-in crisis available at 990 W. 7th Ave.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 687-4000", "n": "5416874000"},
+        {"t": "web",  "l": "🌐 whitebirdclinic.org", "u": "https://whitebirdclinic.org"}
+      ]
+    },
+    {
+      "icon": "🏥",
+      "urg": false,
+      "name": "Hourglass Community Crisis Center",
+      "org": "Columbia Care / Insight Northwest, Eugene",
+      "desc": "Walk-in short-term crisis assessment and stabilization for adults in Lane County. For people who need more than a phone call but don't require a hospital stay. Located at 71 Centennial Loop, Suite A.",
+      "avail": "Call for hours",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 505-8426", "n": "5415058426"},
+        {"t": "web",  "l": "🌐 insightnorthwest.com", "u": "https://www.insightnorthwest.com"}
+      ]
+    },
+    {
+      "icon": "🏨",
+      "urg": false,
+      "name": "PeaceHealth Inpatient Behavioral Health",
+      "org": "PeaceHealth University District, Eugene",
+      "desc": "Acute inpatient psychiatric care for adults (18+) who need a higher level of crisis stabilization. Short-stay unit with an interdisciplinary treatment team. Outpatient psychiatry and counseling also available.",
+      "avail": "Call to arrange",
+      "actions": [
+        {"t": "call", "l": "📞 (458) 205-7013", "n": "4582057013"},
+        {"t": "web",  "l": "🌐 peacehealth.org", "u": "https://www.peacehealth.org/locations/eugene/inpatient-behavioral-health-peacehealth-university-district"}
+      ]
+    }
+  ],
+  "mobile": [
+    {
+      "icon": "📞",
+      "urg": true,
+      "name": "Lane County BH 24/7 Crisis Line",
+      "org": "Lane County Behavioral Health",
+      "desc": "Direct 24/7 crisis line for Lane County. Staff can dispatch the mobile crisis team to your location. This is the fastest way to request a non-police mental health response in Lane County.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 682-1001", "n": "5416821001"}
+      ]
+    },
+    {
+      "icon": "🚐",
+      "urg": true,
+      "name": "CAHOOTS Mobile Crisis Response",
+      "org": "White Bird Clinic + City of Eugene",
+      "desc": "CAHOOTS dispatches a medic and crisis counselor, not police, to non-violent mental health, welfare, and substance use calls. Currently operating at limited capacity following its 2025 suspension. Call ahead to confirm availability.",
+      "avail": "Check availability",
+      "actions": [
+        {"t": "call", "l": "📞 Request via EPD: (541) 682-5111", "n": "5416825111"},
+        {"t": "web",  "l": "🌐 whitebirdclinic.org", "u": "https://whitebirdclinic.org/cahoots"}
+      ]
+    },
+    {
+      "icon": "🏥",
+      "urg": false,
+      "name": "Lane County Mobile Crisis Team",
+      "org": "Lane County Behavioral Health",
+      "desc": "Mobile mental health crisis response. Dial 988 and press 2 to reach the Oregon Crisis Line. Dispatchers can send a mobile team to your location in Lane County. Available Monday through Friday 6 AM to 11 PM, weekends 2 PM to 11 PM.",
+      "avail": "Extended hours",
+      "actions": [
+        {"t": "call", "l": "📞 988, press 2", "n": "988"},
+        {"t": "web",  "l": "🌐 lanecounty.org", "u": "https://www.lanecounty.org/government/departments/health_and_human_services/behavioral_health"}
+      ]
+    }
+  ],
+  "talk": [
+    {
+      "icon": "💚",
+      "urg": false,
+      "name": "NAMI Lane County",
+      "org": "National Alliance on Mental Illness",
+      "desc": "Free peer support groups, education, and advocacy for people living with mental illness and their families. Regular support groups in Eugene, plus the national NAMI Helpline. Local volunteers available Monday through Friday.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 Local: (541) 343-7688", "n": "5413437688"},
+        {"t": "call", "l": "📞 NAMI Helpline: (800) 950-6264", "n": "8009506264"},
+        {"t": "web",  "l": "🌐 namilane.org", "u": "https://www.namilane.org"}
+      ]
+    },
+    {
+      "icon": "🌿",
+      "urg": false,
+      "name": "Center for Community Counseling",
+      "org": "CCC Eugene, 1465 Coburg Rd",
+      "desc": "Community mental health services including individual therapy, group counseling, and psychiatric support. Accepts Oregon Health Plan and offers sliding-scale fees based on income.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 344-0620", "n": "5413440620"},
+        {"t": "web",  "l": "🌐 ccceugene.org", "u": "https://ccceugene.org"}
+      ]
+    },
+    {
+      "icon": "🤝",
+      "urg": false,
+      "name": "Lane County Behavioral Health",
+      "org": "Lane County",
+      "desc": "County-run mental health services with crisis intervention, outpatient therapy, and case management. Serves residents regardless of insurance status or ability to pay.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 682-3669", "n": "5416823669"},
+        {"t": "web",  "l": "🌐 lanecounty.org", "u": "https://www.lanecounty.org/government/departments/health_and_human_services/behavioral_health"}
+      ]
+    },
+    {
+      "icon": "🌱",
+      "urg": false,
+      "name": "Laurel Hill Center",
+      "org": "Eugene",
+      "desc": "Comprehensive community mental health services including individual therapy, psychiatric care, and peer support. Accepts Oregon Health Plan and offers sliding-scale fees.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 485-6851", "n": "5414856851"},
+        {"t": "web",  "l": "🌐 laurelhillcenter.org", "u": "https://www.laurelhillcenter.org"}
+      ]
+    }
+  ],
+  "substances": [
+    {
+      "icon": "🌱",
+      "urg": false,
+      "name": "White Bird Clinic, Substance Use Services",
+      "org": "White Bird Clinic, Eugene",
+      "desc": "Low-barrier substance use counseling, harm reduction, and referrals to treatment. No insurance required. Staff includes people with lived experience of recovery.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 342-8255", "n": "5413428255"},
+        {"t": "web",  "l": "🌐 whitebirdclinic.org", "u": "https://whitebirdclinic.org"}
+      ]
+    },
+    {
+      "icon": "🏠",
+      "urg": true,
+      "name": "Buckley House",
+      "org": "Eugene",
+      "desc": "Medically supervised residential detox and short-term substance use treatment. Provides stabilization and connections to longer-term recovery resources in Lane County.",
+      "avail": "24/7 intake",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 687-6970", "n": "5416876970"},
+        {"t": "web",  "l": "🌐 buckleyhouse.org", "u": "https://buckleyhouse.org"}
+      ]
+    },
+    {
+      "icon": "📋",
+      "urg": false,
+      "name": "SAMHSA Treatment Locator",
+      "org": "National",
+      "desc": "Free, confidential helpline and online locator for finding substance use treatment options, including providers in Lane County that may not be listed here.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (800) 662-4357", "n": "8006624357"},
+        {"t": "web",  "l": "🌐 findtreatment.gov", "u": "https://findtreatment.gov"}
+      ]
+    }
+  ],
+  "housing": [
+    {
+      "icon": "📞",
+      "urg": true,
+      "name": "Lane County 211",
+      "org": "United Way of Lane County",
+      "desc": "Dial 2-1-1 to reach a local specialist who can connect you with emergency shelter, food, utilities, and other basic needs resources in Lane County. Available in English and Spanish.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 Dial 211", "n": "211"},
+        {"t": "web",  "l": "🌐 211info.org", "u": "https://211info.org"}
+      ]
+    },
+    {
+      "icon": "🏡",
+      "urg": false,
+      "name": "St. Vincent de Paul of Lane County",
+      "org": "Eugene",
+      "desc": "Emergency shelter, transitional housing, and rapid rehousing assistance. Operates multiple shelter programs and can connect people to housing navigation services across Lane County.",
+      "avail": "Call for hours",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 345-0941", "n": "5413450941"},
+        {"t": "web",  "l": "🌐 svdp.us", "u": "https://svdp.us"}
+      ]
+    },
+    {
+      "icon": "🔑",
+      "urg": false,
+      "name": "SquareOne Villages",
+      "org": "Eugene",
+      "desc": "Tiny home communities providing stable, affordable transitional housing for people experiencing homelessness. Several village sites across Eugene with community support and case management.",
+      "avail": "Waitlist-based",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 345-5254", "n": "5413455254"},
+        {"t": "web",  "l": "🌐 squareonetribes.org", "u": "https://squareonetribes.org"}
+      ]
+    }
+  ],
+  "dv": [
+    {
+      "icon": "🛡️",
+      "urg": true,
+      "name": "Womenspace",
+      "org": "Eugene",
+      "desc": "24/7 crisis hotline, emergency shelter, legal advocacy, and safety planning for survivors of domestic violence and sexual assault. Serves all genders. Location is confidential.",
+      "avail": "24/7 hotline",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 485-6700", "n": "5414856700"},
+        {"t": "web",  "l": "🌐 womenspace.org", "u": "https://womenspace.org"}
+      ]
+    },
+    {
+      "icon": "🤝",
+      "urg": true,
+      "name": "Hope and Safety Alliance",
+      "org": "Eugene",
+      "desc": "Crisis support, shelter advocacy, legal assistance, and safety planning for people affected by domestic violence in Lane County. Available in English and Spanish.",
+      "avail": "24/7 hotline",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 485-6513", "n": "5414856513"},
+        {"t": "call", "l": "📞 Toll-free: (800) 281-2800", "n": "8002812800"}
+      ]
+    },
+    {
+      "icon": "📞",
+      "urg": true,
+      "name": "National Domestic Violence Hotline",
+      "org": "National",
+      "desc": "Free, confidential crisis support, safety planning, and local referrals for anyone affected by domestic violence. Available by phone, text, or online chat.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (800) 799-7233", "n": "8007997233"},
+        {"t": "sms",  "l": "💬 Text START to 88788", "n": "88788"},
+        {"t": "web",  "l": "🌐 thehotline.org", "u": "https://www.thehotline.org"}
+      ]
+    },
+    {
+      "icon": "💜",
+      "urg": false,
+      "name": "SASS, Sexual Assault Support Services",
+      "org": "Eugene",
+      "desc": "24/7 crisis support, medical advocacy, and counseling for survivors of sexual assault and harassment in Lane County.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 343-7277", "n": "5413437277"},
+        {"t": "call", "l": "📞 Toll-free: (844) 404-7700", "n": "8444047700"}
+      ]
+    }
+  ],
+  "youth": [
+    {
+      "icon": "⭐",
+      "urg": false,
+      "name": "Looking Glass Youth Services",
+      "org": "Looking Glass Community Services, Eugene",
+      "desc": "Crisis support, residential care, outpatient mental health therapy, and case management for youth up to age 21 in Lane County. Includes a youth shelter and drop-in services.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 689-3111", "n": "5416893111"},
+        {"t": "web",  "l": "🌐 lookingglass.us", "u": "https://lookingglass.us"}
+      ]
+    },
+    {
+      "icon": "📞",
+      "urg": true,
+      "name": "Child Crisis Response Team",
+      "org": "Riverview Growth, Lane County",
+      "desc": "Mobile crisis response specifically for children and adolescents in Lane County. Trained staff can respond in person for youth experiencing acute mental health crises.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 (888) 989-9990", "n": "8889899990"}
+      ]
+    },
+    {
+      "icon": "💛",
+      "urg": false,
+      "name": "Oregon YouthLine",
+      "org": "Lines for Life, statewide",
+      "desc": "Teen-to-teen peer support line. Young people ages 13 to 21 can call or text to talk with a trained teen peer counselor. Daily 4 PM to 10 PM. Adults also available outside those hours.",
+      "avail": "Daily, 4-10 PM",
+      "actions": [
+        {"t": "call", "l": "📞 (877) 968-8491", "n": "8779688491"},
+        {"t": "sms",  "l": "💬 Text teen2teen to 839863", "n": "839863"}
+      ]
+    },
+    {
+      "icon": "🏡",
+      "urg": false,
+      "name": "ShelterCare Youth Programs",
+      "org": "ShelterCare, Eugene",
+      "desc": "Supportive housing, mental health services, and case management for youth and young adults up to age 24 experiencing housing instability or homelessness in Lane County.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 686-1262", "n": "5416861262"},
+        {"t": "web",  "l": "🌐 sheltercare.org", "u": "https://sheltercare.org"}
+      ]
+    }
+  ],
+  "veteran": [
+    {
+      "icon": "☎️",
+      "urg": true,
+      "name": "Veterans Crisis Line",
+      "org": "U.S. Dept. of Veterans Affairs",
+      "desc": "Connects veterans, service members, Guard and Reserve members, and survivors with trained VA crisis responders. Available by call, text, and chat.",
+      "avail": "24/7",
+      "actions": [
+        {"t": "call", "l": "📞 988, then press 1", "n": "988"},
+        {"t": "sms",  "l": "💬 Text 838255", "n": "838255"},
+        {"t": "web",  "l": "🌐 veteranscrisisline.net", "u": "https://www.veteranscrisisline.net"}
+      ]
+    },
+    {
+      "icon": "🎖️",
+      "urg": false,
+      "name": "Eugene Vet Center",
+      "org": "VA Vet Centers, Eugene",
+      "desc": "Free counseling, mental health services, and community support for combat veterans, active duty service members, and military sexual trauma survivors and their families.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (541) 607-5900", "n": "5416075900"},
+        {"t": "web",  "l": "🌐 va.gov", "u": "https://www.va.gov/eugene-vet-center"}
+      ]
+    },
+    {
+      "icon": "🤝",
+      "urg": false,
+      "name": "Oregon Veterans Services",
+      "org": "Oregon Dept. of Veterans Affairs",
+      "desc": "State-level support for Oregon veterans including benefits navigation, housing assistance, and mental health referrals across the state.",
+      "avail": "M-F, daytime",
+      "actions": [
+        {"t": "call", "l": "📞 (503) 373-2085", "n": "5033732085"},
+        {"t": "web",  "l": "🌐 oregon.gov/odva", "u": "https://www.oregon.gov/odva"}
+      ]
+    }
+  ]
+}

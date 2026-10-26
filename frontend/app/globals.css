@@ -1,0 +1,83 @@
+/* ============================================================
+   Design tokens — matches the published HTML prototype
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+:root {
+  --bg:          #F7FAF8;
+  --bg-card:     #FFFFFF;
+  --bg-alt:      #EEF5F1;
+  --fg:          #142219;
+  --fg-muted:    #587462;
+  --accent:      #1E6640;
+  --accent-h:    #165231;
+  --accent-lite: #E1F2EA;
+  --amber:       #B35815;
+  --amber-lite:  #FDF0E6;
+  --red:         #B5301F;
+  --red-lite:    #FDEEEC;
+  --border:      #C9DDD4;
+  --shadow:      0 1px 8px rgba(18, 38, 24, 0.07);
+  --r:           10px;
+  --font-d:      'Lora', Georgia, serif;
+  --font-u:      'DM Sans', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0E1A11;
+    --bg-card:     #152018;
+    --bg-alt:      #1B2A1F;
+    --fg:          #E0EDE4;
+    --fg-muted:    #89A08D;
+    --accent:      #48B571;
+    --accent-h:    #5CC882;
+    --accent-lite: #142A1D;
+    --amber:       #F08040;
+    --amber-lite:  #251408;
+    --red:         #E05545;
+    --red-lite:    #2A1010;
+    --border:      #253829;
+    --shadow:      0 1px 12px rgba(0,0,0,0.28);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:          #0E1A11;
+  --bg-card:     #152018;
+  --bg-alt:      #1B2A1F;
+  --fg:          #E0EDE4;
+  --fg-muted:    #89A08D;
+  --accent:      #48B571;
+  --accent-h:    #5CC882;
+  --accent-lite: #142A1D;
+  --amber:       #F08040;
+  --amber-lite:  #251408;
+  --red:         #E05545;
+  --red-lite:    #2A1010;
+  --border:      #253829;
+  --shadow:      0 1px 12px rgba(0,0,0,0.28);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-u);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100svh;
+  padding-left:  max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font-family: var(--font-u); cursor: pointer; }

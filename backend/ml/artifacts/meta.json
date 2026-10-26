@@ -1,0 +1,15 @@
+{
+  "embed_model": "all-MiniLM-L6-v2",
+  "categories": [
+    "crisis",
+    "dv",
+    "housing",
+    "mobile",
+    "substances",
+    "talk",
+    "veteran",
+    "youth"
+  ],
+  "n_train": 2040,
+  "n_test": 360
+}
