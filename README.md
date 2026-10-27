@@ -1,7 +1,6 @@
 # HelpNexus
 
-<<<<<<< HEAD
-A full-stack web app connecting people to mental health, crisis, housing, and community support — starting in Eugene / Lane County, Oregon.
+A full-stack web app connecting people to mental health, crisis, housing, and community support, starting in Eugene / Lane County, Oregon.
 =======
 A full-stack web app that routes people to the right mental health, crisis, housing, and community support services in **Eugene / Lane County, Oregon**, built on the CAHOOTS model of care.
 >>>>>>> a83168f14c7757e6e39ff71464a425030151feeb
