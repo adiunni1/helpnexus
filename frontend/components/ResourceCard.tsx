@@ -6,36 +6,54 @@ export default function ResourceCard({ r }: { r: Resource }) {
   const is247 = r.avail === "24/7" || r.avail.includes("24/7");
 
   return (
-    <div style={{
-      background: "var(--bg-card)", border: "1px solid var(--border)",
-      borderRadius: "var(--r)", padding: "15px 16px", marginBottom: 9,
-      boxShadow: "var(--shadow)",
-    }}>
+    <div
+      className="resource-card"
+      style={{
+        background: "var(--bg-card)",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--r)",
+        padding: "18px 18px 16px",
+        marginBottom: 10,
+        boxShadow: "var(--shadow-md)",
+      }}
+    >
       {/* Head row */}
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 11, marginBottom: 8 }}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 13, marginBottom: 10 }}>
         <div style={{
-          width: 34, height: 34, background: r.urg ? "var(--amber-lite)" : "var(--accent-lite)",
-          borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: "1rem", flexShrink: 0,
+          width: 40, height: 40,
+          background: r.urg
+            ? "linear-gradient(135deg, var(--amber-lite), rgba(179,88,21,0.12))"
+            : "linear-gradient(135deg, var(--accent-lite), rgba(30,102,64,0.1))",
+          border: `1px solid ${r.urg ? "rgba(179,88,21,0.2)" : "rgba(30,102,64,0.15)"}`,
+          borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: "1.1rem", flexShrink: 0,
         }}>
           {r.icon}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: "0.92rem", fontWeight: 600, color: "var(--fg)", lineHeight: 1.3 }}>{r.name}</div>
-          <div style={{ fontSize: "0.77rem", color: "var(--fg-muted)", marginTop: 1 }}>{r.org}</div>
+          <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "var(--fg)", lineHeight: 1.3 }}>
+            {r.name}
+          </div>
+          <div style={{ fontSize: "0.78rem", color: "var(--fg-muted)", marginTop: 2 }}>
+            {r.org}
+          </div>
         </div>
         <span style={{
-          fontSize: "0.7rem", fontWeight: 600, padding: "3px 8px",
-          borderRadius: 20, flexShrink: 0, whiteSpace: "nowrap",
+          fontSize: "0.72rem", fontWeight: 600,
+          padding: "4px 10px", borderRadius: 100, flexShrink: 0, whiteSpace: "nowrap",
           background: is247 ? "var(--accent-lite)" : "var(--bg-alt)",
           color: is247 ? "var(--accent)" : "var(--fg-muted)",
+          border: `1px solid ${is247 ? "rgba(30,102,64,0.2)" : "var(--border)"}`,
         }}>
           {is247 ? "● 24/7" : r.avail}
         </span>
       </div>
 
       {/* Description */}
-      <p style={{ fontSize: "0.8rem", color: "var(--fg-muted)", lineHeight: 1.55, marginBottom: 11 }}>
+      <p style={{
+        fontSize: "0.82rem", color: "var(--fg-muted)",
+        lineHeight: 1.6, marginBottom: 13,
+      }}>
         {r.desc}
       </p>
 
@@ -44,7 +62,9 @@ export default function ResourceCard({ r }: { r: Resource }) {
         {r.actions.map((a, i) => {
           if (a.t === "web") {
             return (
-              <a key={i} href={a.u} target="_blank" rel="noopener noreferrer" style={chipStyle("web")}>
+              <a key={i} href={a.u} target="_blank" rel="noopener noreferrer"
+                 className="chip-action"
+                 style={chipStyle("web")}>
                 {a.l}
               </a>
             );
@@ -52,7 +72,7 @@ export default function ResourceCard({ r }: { r: Resource }) {
           const digits = (a.n ?? "").replace(/\D/g, "");
           const href   = a.t === "sms" ? `sms:${digits}` : `tel:${digits}`;
           return (
-            <a key={i} href={href} style={chipStyle("call")}>
+            <a key={i} href={href} className="chip-action" style={chipStyle("call")}>
               {a.l}
             </a>
           );
@@ -63,12 +83,15 @@ export default function ResourceCard({ r }: { r: Resource }) {
 }
 
 function chipStyle(type: "call" | "web"): React.CSSProperties {
+  const isCall = type === "call";
   return {
-    display: "inline-flex", alignItems: "center", gap: 4,
-    padding: "6px 13px", borderRadius: 20,
-    fontSize: "0.77rem", fontWeight: 600, lineHeight: 1,
+    display: "inline-flex", alignItems: "center", gap: 5,
+    padding: "7px 14px", borderRadius: 100,
+    fontSize: "0.79rem", fontWeight: 600, lineHeight: 1,
     textDecoration: "none", cursor: "pointer",
-    background: type === "call" ? "var(--accent-lite)" : "var(--bg-alt)",
-    color:      type === "call" ? "var(--accent)"      : "var(--fg-muted)",
+    background: isCall ? "var(--accent)"  : "var(--bg-alt)",
+    color:      isCall ? "#fff"           : "var(--fg-muted)",
+    border:     isCall ? "none"           : "1px solid var(--border)",
+    boxShadow:  isCall ? "0 2px 8px rgba(30,102,64,0.25)" : "none",
   };
 }
