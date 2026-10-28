@@ -26,6 +26,10 @@
   --font-d:      'Lora', Georgia, serif;
   --font-u:      'DM Sans', system-ui, sans-serif;
   --grad-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  /* Hero / landing */
+  --hero:        #1A3D28;
+  --hero-2:      #122D1D;
+  --cream:       #F0E6CF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,8 +93,11 @@ html {
 body {
   background: var(--bg);
   min-height: 100svh;
-  padding-left:  max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Landing-screen body state: hero green fills the full viewport */
+body.landing-screen {
+  background: var(--hero);
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -192,6 +199,58 @@ button { font-family: var(--font-u); cursor: pointer; }
 }
 .urg-tile:active {
   transform: scale(0.97);
+}
+
+/* Hero landing button (white pill on dark green) */
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.18s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.15s;
+}
+.btn-hero:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.32) !important;
+}
+.btn-hero:active {
+  transform: scale(0.97);
+}
+
+/* NavRow responsive layout */
+.nav-row-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 20px 32px;
+  margin-top: auto;
+}
+.btn-nav-continue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.nav-row-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+@media (min-width: 540px) {
+  .nav-row-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .btn-nav-continue {
+    width: auto;
+    justify-content: flex-start;
+  }
+  .nav-row-back {
+    justify-content: flex-start;
+  }
 }
 
 @keyframes spin {

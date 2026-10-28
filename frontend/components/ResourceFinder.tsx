@@ -31,6 +31,16 @@ export default function ResourceFinder() {
   const dirRef    = useRef<1 | -1>(1); // 1 = forward, -1 = back
   const loadTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Toggle hero body class so the full viewport matches the landing hero color
+  useEffect(() => {
+    if (screen === "landing") {
+      document.body.classList.add("landing-screen");
+    } else {
+      document.body.classList.remove("landing-screen");
+    }
+    return () => { document.body.classList.remove("landing-screen"); };
+  }, [screen]);
+
   const go = useCallback((id: ScreenId) => {
     const currIdx = SCREEN_ORDER.indexOf(screen);
     const nextIdx = SCREEN_ORDER.indexOf(id);
@@ -53,9 +63,9 @@ export default function ResourceFinder() {
     setLoadMsg("Finding resources…");
     setError(null);
 
-    // After 5s with no response, hint that the server is warming up
+    // After 5 s with no response, hint that the server is warming up
     loadTimer.current = setTimeout(() => {
-      setLoadMsg("Server is waking up — this takes up to 60s on first load…");
+      setLoadMsg("Server is waking up — this takes up to 60 s on first load…");
     }, 5000);
 
     try {
@@ -81,46 +91,60 @@ export default function ResourceFinder() {
   };
 
   const dir = dirRef.current;
+  const isLanding = screen === "landing";
 
   return (
-    <div style={{ maxWidth: 560, margin: "0 auto", minHeight: "100svh", display: "flex", flexDirection: "column" }}>
+    <div style={{
+      maxWidth: 480,
+      margin: "0 auto",
+      minHeight: "100svh",
+      display: "flex",
+      flexDirection: "column",
+    }}>
 
-      {/* Top nav */}
-      <div style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        paddingBlock: 20, gap: 12,
-        position: "sticky", top: 0, zIndex: 10,
-        background: "rgba(var(--bg-rgb, 244,248,245), 0.88)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        marginInline: -16,
-        paddingInline: 16,
-      }}>
+      {/* ── Top nav (hidden on landing — the landing screen has its own header) ── */}
+      {!isLanding && (
         <div style={{
-          fontFamily: "var(--font-d)", fontSize: "1.05rem",
-          fontWeight: 600, color: "var(--accent)",
-          letterSpacing: "-0.01em",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          paddingBlock: 18, gap: 12,
+          position: "sticky", top: 0, zIndex: 10,
+          background: "rgba(var(--bg-rgb, 244,248,245), 0.88)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          paddingInline: "max(20px, env(safe-area-inset-left, 20px))",
         }}>
-          HelpNexus<em style={{ fontWeight: 400, fontStyle: "italic", color: "var(--fg-muted)", marginLeft: 4 }}>Eugene</em>
-        </div>
-        {screen !== "landing" && (
+          <div style={{
+            fontFamily: "var(--font-d)", fontSize: "1rem",
+            fontWeight: 600, color: "var(--accent)",
+            letterSpacing: "-0.01em",
+          }}>
+            HelpNexus
+            <em style={{ fontWeight: 400, fontStyle: "italic", color: "var(--fg-muted)", marginLeft: 5 }}>
+              Eugene
+            </em>
+          </div>
           <button
             className="btn-ghost"
             onClick={() => go("landing")}
             style={{
-              fontSize: "0.8rem", fontWeight: 600, color: "var(--fg-muted)",
+              fontSize: "0.78rem", fontWeight: 600, color: "var(--fg-muted)",
               background: "var(--bg-alt)", border: "1px solid var(--border)",
               padding: "6px 14px", borderRadius: 100, cursor: "pointer",
             }}
           >
             Start over
           </button>
-        )}
-      </div>
+        </div>
+      )}
 
-      <ProgressBar value={PROGRESS[screen]} />
+      {/* ── Step dots (shown on s1/s2/s3) ── */}
+      {!isLanding && screen !== "results" && (
+        <div style={{ paddingInline: "max(20px, env(safe-area-inset-left, 20px))" }}>
+          <ProgressBar value={PROGRESS[screen]} />
+        </div>
+      )}
 
-      {/* Screen container — AnimatePresence handles enter/exit */}
+      {/* ── Screen content ── */}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={screen}
@@ -130,11 +154,47 @@ export default function ResourceFinder() {
           transition={SPRING}
           style={{ flex: 1, display: "flex", flexDirection: "column" }}
         >
-          {screen === "landing" && <LandingScreen onStart={() => go("s1")} />}
-          {screen === "s1"      && <Step1Screen  intake={intake} onSet={setWho}  onBack={() => go("landing")} onNext={() => go("s2")} />}
-          {screen === "s2"      && <Step2Screen  intake={intake} onSet={setWhat} onBack={() => go("s1")}      onNext={() => go("s3")} />}
-          {screen === "s3"      && <Step3Screen  intake={intake} onSet={setUrg}  onBack={() => go("s2")}      onNext={handleSubmit} loading={loading} loadMsg={loadMsg} error={error} />}
-          {screen === "results" && results && <ResultsScreen results={results} intake={intake} onBack={() => go("s1")} />}
+          {/* Landing — full bleed, handles its own layout */}
+          {isLanding && (
+            <LandingScreen onStart={() => go("s1")} />
+          )}
+
+          {/* Step & result screens — padded content column */}
+          {!isLanding && (
+            <div style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              paddingInline: "max(20px, env(safe-area-inset-left, 20px))",
+              paddingBottom: "max(28px, env(safe-area-inset-bottom, 28px))",
+            }}>
+              {screen === "s1" && (
+                <Step1Screen
+                  intake={intake} onSet={setWho}
+                  onBack={() => go("landing")} onNext={() => go("s2")}
+                />
+              )}
+              {screen === "s2" && (
+                <Step2Screen
+                  intake={intake} onSet={setWhat}
+                  onBack={() => go("s1")} onNext={() => go("s3")}
+                />
+              )}
+              {screen === "s3" && (
+                <Step3Screen
+                  intake={intake} onSet={setUrg}
+                  onBack={() => go("s2")} onNext={handleSubmit}
+                  loading={loading} loadMsg={loadMsg} error={error}
+                />
+              )}
+              {screen === "results" && results && (
+                <ResultsScreen
+                  results={results} intake={intake}
+                  onBack={() => go("s1")}
+                />
+              )}
+            </div>
+          )}
         </motion.div>
       </AnimatePresence>
     </div>

@@ -52,32 +52,33 @@ export default function Step1Screen({ intake, onSet, onBack, onNext }: Props) {
 function StepLabel({ current, total }: { current: number; total: number }) {
   return (
     <div style={{
-      fontSize: "0.78rem", fontWeight: 600, color: "var(--accent)",
-      marginBottom: 10, display: "flex", alignItems: "center", gap: 8,
+      fontSize: "0.71rem",
+      fontWeight: 700,
+      color: "var(--accent)",
+      letterSpacing: "0.07em",
+      textTransform: "uppercase",
+      marginBottom: 12,
+      opacity: 0.85,
     }}>
-      <span style={{
-        display: "inline-flex", alignItems: "center", justifyContent: "center",
-        width: 22, height: 22, borderRadius: "50%",
-        background: "var(--accent)", color: "#fff",
-        fontSize: "0.7rem", fontWeight: 700,
-      }}>
-        {current}
-      </span>
-      <span style={{ color: "var(--fg-muted)" }}>of {total}</span>
+      Step {current} of {total}
     </div>
   );
 }
 
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-d)",
-  fontSize: "clamp(1.35rem, 4.5vw, 1.75rem)",
-  fontWeight: 600, lineHeight: 1.20,
-  letterSpacing: "-0.01em",
-  marginBottom: 8,
+  fontSize: "clamp(1.45rem, 5vw, 1.9rem)",
+  fontWeight: 600,
+  lineHeight: 1.16,
+  letterSpacing: "-0.015em",
+  marginBottom: 10,
 };
 
 const subStyle: React.CSSProperties = {
-  color: "var(--fg-muted)", fontSize: "0.9rem", marginBottom: 28,
+  color: "var(--fg-muted)",
+  fontSize: "0.92rem",
+  lineHeight: 1.55,
+  marginBottom: 28,
 };
 
 export { StepLabel, headingStyle, subStyle };
