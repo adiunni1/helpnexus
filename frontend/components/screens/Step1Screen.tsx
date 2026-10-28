@@ -67,10 +67,10 @@ function StepLabel({ current, total }: { current: number; total: number }) {
 
 const headingStyle: React.CSSProperties = {
   fontFamily: "var(--font-d)",
-  fontSize: "clamp(1.45rem, 5vw, 1.9rem)",
+  fontSize: "clamp(1.45rem, 5vw, 1.85rem)",
   fontWeight: 600,
-  lineHeight: 1.16,
-  letterSpacing: "-0.015em",
+  lineHeight: 1.2,
+  letterSpacing: "-0.005em",
   marginBottom: 10,
 };
 

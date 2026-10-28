@@ -139,11 +139,11 @@ export default function LandingScreen({ onStart }: { onStart: () => void }) {
             variants={ITEM}
             style={{
               fontFamily: "var(--font-d)",
-              fontSize: "clamp(2.3rem, 9vw, 3.1rem)",
-              fontWeight: 600,
-              lineHeight: 1.04,
+              fontSize: "clamp(2.2rem, 8.5vw, 3rem)",
+              fontWeight: 700,
+              lineHeight: 1.08,
               color: "#ffffff",
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.01em",
               marginBottom: 18,
             }}
           >
