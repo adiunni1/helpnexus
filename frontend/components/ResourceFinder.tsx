@@ -65,7 +65,7 @@ export default function ResourceFinder() {
 
     // After 5 s with no response, hint that the server is warming up
     loadTimer.current = setTimeout(() => {
-      setLoadMsg("Server is waking up — this takes up to 60 s on first load…");
+      setLoadMsg("Server is waking up. This can take up to 60 s on first load…");
     }, 5000);
 
     try {
@@ -81,7 +81,7 @@ export default function ResourceFinder() {
       const isNetwork = msg.includes("fetch") || msg.includes("network") || msg.includes("abort");
       setError(
         isNetwork
-          ? "Couldn't reach the server. Please try again — it may need a moment to wake up."
+          ? "Couldn't reach the server. Please try again. It may need a moment to wake up."
           : msg,
       );
     } finally {

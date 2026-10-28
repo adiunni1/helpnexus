@@ -80,7 +80,7 @@ export default function Step3Screen({ intake, onSet, onBack, onNext, loading, lo
             <strong style={{ color: "var(--red)", display: "block", fontSize: "0.9rem", marginBottom: 5 }}>
               Please reach out to a crisis line first
             </strong>
-            Free, confidential, 24/7 — these lines are available right now.
+            Free, confidential, 24/7. These lines are available right now.
             <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 10 }}>
               {[
                 { href: "tel:988",      label: "📞 Call or text 988" },

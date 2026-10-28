@@ -210,7 +210,7 @@ export default function LandingScreen({ onStart }: { onStart: () => void }) {
             <strong style={{ color: "#FFB347" }}>In immediate danger?</strong>{" "}
             Call <strong style={{ color: "#fff" }}>911</strong>.{" "}
             Mental health crisis: call or text{" "}
-            <strong style={{ color: "#fff" }}>988</strong> — free, confidential, 24/7.
+            <strong style={{ color: "#fff" }}>988</strong>. Free, confidential, 24/7.
           </motion.div>
         </motion.div>
 
@@ -226,7 +226,7 @@ export default function LandingScreen({ onStart }: { onStart: () => void }) {
             textAlign: "center",
             lineHeight: 1.6,
           }}>
-            Community reference tool — not a crisis line or emergency service
+            Community reference tool. Not a crisis line or emergency service.
           </p>
         </div>
       </div>
