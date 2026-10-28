@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { IntakeState, IntakeResponse, WhoValue, WhatValue, UrgValue } from "@/lib/types";
 import { submitIntake } from "@/lib/api";
@@ -26,8 +26,10 @@ export default function ResourceFinder() {
   const [intake,   setIntake]   = useState<IntakeState>(INITIAL_STATE);
   const [results,  setResults]  = useState<IntakeResponse | null>(null);
   const [loading,  setLoading]  = useState(false);
+  const [loadMsg,  setLoadMsg]  = useState("Finding resources…");
   const [error,    setError]    = useState<string | null>(null);
-  const dirRef = useRef<1 | -1>(1); // 1 = forward, -1 = back
+  const dirRef    = useRef<1 | -1>(1); // 1 = forward, -1 = back
+  const loadTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const go = useCallback((id: ScreenId) => {
     const currIdx = SCREEN_ORDER.indexOf(screen);
@@ -48,7 +50,14 @@ export default function ResourceFinder() {
 
   const handleSubmit = async () => {
     setLoading(true);
+    setLoadMsg("Finding resources…");
     setError(null);
+
+    // After 5s with no response, hint that the server is warming up
+    loadTimer.current = setTimeout(() => {
+      setLoadMsg("Server is waking up — this takes up to 60s on first load…");
+    }, 5000);
+
     try {
       const data = await submitIntake({
         who:  intake.who  ?? undefined,
@@ -58,8 +67,15 @@ export default function ResourceFinder() {
       setResults(data);
       go("results");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      const msg = err instanceof Error ? err.message : "Something went wrong.";
+      const isNetwork = msg.includes("fetch") || msg.includes("network") || msg.includes("abort");
+      setError(
+        isNetwork
+          ? "Couldn't reach the server. Please try again — it may need a moment to wake up."
+          : msg,
+      );
     } finally {
+      if (loadTimer.current) clearTimeout(loadTimer.current);
       setLoading(false);
     }
   };
@@ -117,7 +133,7 @@ export default function ResourceFinder() {
           {screen === "landing" && <LandingScreen onStart={() => go("s1")} />}
           {screen === "s1"      && <Step1Screen  intake={intake} onSet={setWho}  onBack={() => go("landing")} onNext={() => go("s2")} />}
           {screen === "s2"      && <Step2Screen  intake={intake} onSet={setWhat} onBack={() => go("s1")}      onNext={() => go("s3")} />}
-          {screen === "s3"      && <Step3Screen  intake={intake} onSet={setUrg}  onBack={() => go("s2")}      onNext={handleSubmit} loading={loading} error={error} />}
+          {screen === "s3"      && <Step3Screen  intake={intake} onSet={setUrg}  onBack={() => go("s2")}      onNext={handleSubmit} loading={loading} loadMsg={loadMsg} error={error} />}
           {screen === "results" && results && <ResultsScreen results={results} intake={intake} onBack={() => go("s1")} />}
         </motion.div>
       </AnimatePresence>

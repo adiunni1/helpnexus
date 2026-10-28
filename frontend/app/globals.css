@@ -193,3 +193,7 @@ button { font-family: var(--font-u); cursor: pointer; }
 .urg-tile:active {
   transform: scale(0.97);
 }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

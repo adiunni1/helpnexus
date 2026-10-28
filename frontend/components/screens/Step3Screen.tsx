@@ -6,12 +6,13 @@ import NavRow from "../NavRow";
 import { StepLabel, headingStyle, subStyle } from "./Step1Screen";
 
 interface Props {
-  intake:  IntakeState;
-  onSet:   (v: UrgValue) => void;
-  onBack:  () => void;
-  onNext:  () => void;
-  loading: boolean;
-  error:   string | null;
+  intake:   IntakeState;
+  onSet:    (v: UrgValue) => void;
+  onBack:   () => void;
+  onNext:   () => void;
+  loading:  boolean;
+  loadMsg?: string;
+  error:    string | null;
 }
 
 const OPTIONS: { value: UrgValue; icon: string; label: string; sub: string; isUrgent?: boolean }[] = [
@@ -20,7 +21,7 @@ const OPTIONS: { value: UrgValue; icon: string; label: string; sub: string; isUr
   { value: "week",  icon: "🟢", label: "This week",  sub: "Planning ahead or building support" },
 ];
 
-export default function Step3Screen({ intake, onSet, onBack, onNext, loading, error }: Props) {
+export default function Step3Screen({ intake, onSet, onBack, onNext, loading, loadMsg, error }: Props) {
   const showCrisis = intake.urg === "now";
 
   return (
@@ -100,10 +101,36 @@ export default function Step3Screen({ intake, onSet, onBack, onNext, loading, er
         </motion.div>
       )}
 
+      {loading && loadMsg && (
+        <div style={{
+          display: "flex", alignItems: "center", gap: 10,
+          fontSize: "0.83rem", color: "var(--fg-muted)",
+          marginBottom: 14, padding: "10px 14px",
+          background: "var(--bg-alt)", borderRadius: "var(--r)",
+          border: "1px solid var(--border)",
+        }}>
+          <span style={{ display: "inline-block", width: 14, height: 14, borderRadius: "50%",
+            border: "2px solid var(--accent)", borderTopColor: "transparent",
+            animation: "spin 0.8s linear infinite",
+          }} />
+          {loadMsg}
+        </div>
+      )}
+
       {error && (
-        <p style={{ color: "var(--red)", fontSize: "0.85rem", marginBottom: 14 }}>
-          {error}
-        </p>
+        <div style={{
+          background: "var(--red-lite)", border: "1px solid var(--red)",
+          borderRadius: "var(--r)", padding: "12px 16px",
+          fontSize: "0.85rem", color: "var(--fg)", marginBottom: 14,
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12,
+        }}>
+          <span>⚠️ {error}</span>
+          <button onClick={onNext} style={{
+            background: "var(--accent)", color: "#fff", border: "none",
+            borderRadius: 100, padding: "6px 14px", fontSize: "0.8rem",
+            fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap",
+          }}>Try again</button>
+        </div>
       )}
 
       <NavRow

@@ -10,8 +10,38 @@ const BASE = process.env.NEXT_PUBLIC_API_URL
   ? `${process.env.NEXT_PUBLIC_API_URL}/api/v1`
   : "/api/v1";
 
+// Render free tier can take up to 60s to cold-start.
+// We give it 70s and retry once on network errors.
+const TIMEOUT_MS = 70_000;
+const MAX_RETRIES = 2;
+
+async function fetchWithRetry(
+  url: string,
+  init: RequestInit,
+  attempt = 1,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const res = await fetch(url, { ...init, signal: controller.signal });
+    clearTimeout(timer);
+    return res;
+  } catch (err) {
+    clearTimeout(timer);
+    const isNetwork =
+      err instanceof TypeError || (err instanceof DOMException && err.name === "AbortError");
+    if (isNetwork && attempt < MAX_RETRIES) {
+      // Brief pause before retry
+      await new Promise(r => setTimeout(r, 1500));
+      return fetchWithRetry(url, init, attempt + 1);
+    }
+    throw err;
+  }
+}
+
 async function post<T>(path: string, body: unknown): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, {
+  const res = await fetchWithRetry(`${BASE}${path}`, {
     method:  "POST",
     headers: { "Content-Type": "application/json" },
     body:    JSON.stringify(body),
@@ -24,7 +54,7 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`);
+  const res = await fetchWithRetry(`${BASE}${path}`, {});
   if (!res.ok) throw new Error(`API GET ${path} failed (${res.status})`);
   return res.json() as Promise<T>;
 }
