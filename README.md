@@ -6,10 +6,6 @@ A full-stack web app that routes people to the right mental health, crisis, hous
 
 Try it here: https://helpnexus.vercel.app
 
->>>>>>> a83168f14c7757e6e39ff71464a425030151feeb
-
----
-
 ## Stack
 
 | Layer      | Technology |
